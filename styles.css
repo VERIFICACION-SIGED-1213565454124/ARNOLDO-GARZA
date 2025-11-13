@@ -1,11 +1,12 @@
 /* Colores de referencia */
 :root {
-    --color-maroon: #811e3b; /* Guinda del encabezado */
-    --color-gold: #c39a5e;   /* Dorado de la barra SIGED */
-    --color-title-bg: #e2e2e2; /* Gris claro de los títulos de sección */
-    --color-row-bg: #f8f8f8; /* Gris muy claro para las filas de datos */
-    --color-row-alt: #ffffff; /* Blanco para filas alternas */
+    --color-maroon: #811e3b; /* Guinda del encabezado y footer */
+    --color-gold: #c39a5e;   
+    --color-title-bg: #e2e2e2;
+    --color-row-bg: #f8f8f8;
+    --color-row-alt: #ffffff;
     --color-text: #333;
+    --color-white: #ffffff;
 }
 
 body {
@@ -13,12 +14,21 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    
+    /* CLAVE: Ajuste para el encabezado fijo. Mueve el contenido hacia abajo. */
+    padding-top: 100px; 
 }
 
-/* --- Encabezado --- */
+/* --- Encabezado FIJO --- */
 .header-main {
     background-color: #fff;
-    position: relative;
+    /* PROPIEDADES CLAVE PARA FIJAR */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .header-top {
@@ -30,32 +40,31 @@ body {
 .logo {
     width: 180px; 
     max-width: 90%;
-    filter: brightness(0) invert(1); /* Mantiene el filtro para el SVG/PNG blanco */
+    filter: brightness(0) invert(1);
 }
 
 .header-bottom {
     background-color: var(--color-gold);
     padding: 12px 20px;
-    margin-bottom: 5px; /* Pequeño espacio debajo del SIGED */
+    margin-bottom: 0; /* Ya no necesitamos el margen aquí, sino en el body padding */
 }
 
 .siged {
     margin: 0;
-    color: #fff;
+    color: var(--color-white);
     font-size: 1.8em;
     font-weight: bold;
     letter-spacing: 1px;
     padding-left: 30px;
 }
 
-/* --- Contenedor Principal --- */
+/* --- Contenedor Principal (Cajas de Datos) --- */
 .container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: var(--color-white);
 }
 
-/* --- Títulos de Sección (Cajas Grises) --- */
 .section-title {
     background-color: var(--color-title-bg);
     color: var(--color-text);
@@ -67,30 +76,26 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-/* --- Filas de Datos (Cajas Blancas/Grises) --- */
 .data-row {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se apilen en pantallas pequeñas */
+    flex-wrap: wrap;
     border-bottom: 1px solid #eee;
-    background-color: var(--color-row-alt); /* Fondo blanco por defecto */
+    background-color: var(--color-row-alt);
 }
 
-/* Alternamos el color de fondo para que se parezca al video */
 .data-row:nth-child(even) {
-    background-color: var(--color-row-bg); /* Fondo gris claro */
+    background-color: var(--color-row-bg);
 }
 
 .label-box {
-    /* Ocupa todo el ancho en móvil, o la mitad en PC */
     width: 100%; 
     padding: 8px 20px 0 20px;
     font-size: 0.9em;
-    color: #666; /* Texto más claro para el label */
+    color: #666;
     font-weight: normal;
 }
 
 .value-box {
-    /* Ocupa todo el ancho en móvil, o la mitad en PC */
     width: 100%; 
     padding: 0 20px 8px 20px;
     font-weight: bold;
@@ -99,35 +104,125 @@ body {
     line-height: 1.2;
 }
 
-/* --- Fila de Resultado (Ajuste de color) --- */
 .result-row {
-    background-color: #d1f3cc !important; /* Verde claro para el resultado, sobreescribe el alternado */
+    background-color: #d1f3cc !important;
     border-bottom: 1px solid #b5d5b0;
     font-weight: bold;
 }
 
-/* --- Footer (Solo para dar espacio) --- */
-.footer {
-    height: 50px;
+/* ======================================= */
+/* ESTILOS DEL FOOTER GUINDA (MÓVIL) */
+/* ======================================= */
+.footer-main {
+    background-color: var(--color-maroon);
+    color: var(--color-white);
+    padding: 20px 0 30px 0;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    width: 180px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+}
+
+.footer-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.chevron {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.footer-denuncia {
+    display: block;
+    color: var(--color-white);
+    text-decoration: underline;
+    font-size: 1.1em;
+    padding: 15px 0 25px 0;
+}
+
+.footer-social {
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-social p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-number {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.footer-contact p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.2;
 }
 
 /* ======================================= */
 /* MEDIA QUERY: AJUSTES PARA PANTALLAS GRANDES (PC/TABLET) */
 /* ======================================= */
 @media (min-width: 650px) {
-    
+
+    /* Quita el padding superior del body en PC, ya que la posición fija
+       del encabezado solo tiene sentido en el scroll móvil.
+       En PC, el diseño es una "caja" centrada sin scroll aparente. */
     body {
         padding: 40px 0;
-    }
-    
-    .container {
-        margin: 20px auto;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra de documento en PC */
+        padding-top: 40px; 
     }
 
+    /* En PC, el encabezado fijo debe tener el mismo ancho que el contenedor */
     .header-main {
         max-width: 600px;
         margin: 0 auto;
+        position: relative; /* CLAVE: Lo hacemos relativo en PC para que no sea fijo */
+        box-shadow: none; /* Quitamos la sombra de fijo en PC */
+    }
+
+    /* Contenedor principal de la página (caja blanca) */
+    .container {
+        margin: 20px auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding-bottom: 40px;
     }
 
     /* Filas de Datos en PC: Las etiquetas y valores van lado a lado */
@@ -143,9 +238,16 @@ body {
         padding: 10px 20px 10px 0;
         text-align: right;
     }
+
+    /* AJUSTE FINAL DEL FOOTER PARA PC */
+    .footer-main {
+        max-width: 600px;
+        margin: 20px auto 40px auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 40px 0;
+    }
     
-    /* Para PC, los títulos tienen el mismo padding que el contenido */
-    .section-title {
-        padding: 10px 20px;
+    .footer-content {
+        padding: 0 40px; 
     }
 }
