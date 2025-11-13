@@ -1,0 +1,122 @@
+/* Colores de referencia */
+:root {
+    --color-maroon: #811e3b; /* Guinda de la parte superior */
+    --color-gold: #c39a5e;   /* Dorado de la barra SIGED */
+    --color-green: #d1f3cc;  /* Verde del resultado obtenido */
+    --color-text: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo gris claro */
+}
+
+/* --- Encabezado --- */
+.header-main {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.header-top {
+    background-color: var(--color-maroon);
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 200px; /* Ajusta el tamaño del logo */
+    max-width: 100%;
+    filter: brightness(0) invert(1); /* Para que el logo se vea blanco */
+}
+
+.header-bottom {
+    background-color: var(--color-gold);
+    padding: 15px 20px 15px 50px; /* Un poco más de padding izquierdo para alinear */
+}
+
+.siged {
+    margin: 0;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 20px;
+    background-color: #fff;
+}
+
+/* --- Título del Documento --- */
+.title-doc {
+    font-size: 1.4em;
+    font-weight: normal;
+    color: var(--color-text);
+    padding-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* --- Secciones de Detalle --- */
+.detail-section {
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.label {
+    font-weight: normal;
+    color: #333;
+    font-size: 0.9em;
+    display: block; /* Asegura que ocupe su propia línea */
+}
+
+.value, .value-folio {
+    font-weight: bold;
+    color: #000;
+    margin-top: -5px; /* Sube el texto para que quede pegado al label */
+    font-size: 1.1em;
+}
+
+/* --- Resultado Obtenido --- */
+.result-box {
+    background-color: var(--color-green);
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.result-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.result-score {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    line-height: 1;
+}
+
+.result-text {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    line-height: 1;
+}
+
+/* Estilos para el efecto de sombra en el contenedor */
+@media (min-width: 601px) {
+    .container {
+        padding: 0 40px 40px 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
