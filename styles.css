@@ -10,78 +10,85 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Fondo gris claro */
+    background-color: #f4f4f4;
 }
 
 /* --- Encabezado --- */
 .header-main {
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Eliminamos la sombra aquí, la pondremos en el contenedor para la vista de escritorio */
     position: relative;
 }
 
 .header-top {
     background-color: var(--color-maroon);
-    padding: 10px 20px;
+    padding: 10px 0; /* Menos padding horizontal en móvil */
     text-align: center;
 }
 
 .logo {
-    width: 200px; /* Ajusta el tamaño del logo */
-    max-width: 100%;
-    filter: brightness(0) invert(1); /* Para que el logo se vea blanco */
+    width: 180px; /* Tamaño ligeramente reducido para móvil */
+    max-width: 90%;
+    filter: brightness(0) invert(1);
 }
 
 .header-bottom {
     background-color: var(--color-gold);
-    padding: 15px 20px 15px 50px; /* Un poco más de padding izquierdo para alinear */
+    padding: 12px 20px;
 }
 
 .siged {
     margin: 0;
     color: #fff;
-    font-size: 2em;
+    font-size: 1.8em; /* Tamaño ajustado para móvil */
     font-weight: bold;
     letter-spacing: 1px;
+    padding-left: 30px; /* Espacio para el texto SIGED */
 }
 
-/* --- Contenedor Principal --- */
+/* --- Contenedor Principal (Vista Móvil) --- */
 .container {
     max-width: 600px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 0 auto; /* Quitamos el margen superior para que se pegue al header en móvil */
+    padding: 0;
     background-color: #fff;
+    /* En móvil, el contenedor ocupa todo el ancho sin bordes ni sombras */
 }
 
 /* --- Título del Documento --- */
 .title-doc {
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: normal;
     color: var(--color-text);
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding: 20px 20px 10px 20px; /* Padding para el contenido en móvil */
+    margin: 0;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
 }
 
 /* --- Secciones de Detalle --- */
 .detail-section {
     margin-bottom: 15px;
     line-height: 1.2;
+    padding: 0 20px; /* Padding para los detalles en móvil */
+}
+
+/* Aseguramos que los labels y valores no tengan márgenes extra */
+.detail-section p {
+    margin: 8px 0; 
 }
 
 .label {
     font-weight: normal;
     color: #333;
     font-size: 0.9em;
-    display: block; /* Asegura que ocupe su propia línea */
+    display: block;
 }
 
 .value, .value-folio {
     font-weight: bold;
     color: #000;
-    margin-top: -5px; /* Sube el texto para que quede pegado al label */
-    font-size: 1.1em;
+    margin-top: -5px;
+    font-size: 1.05em; /* Ligeramente más pequeño en móvil */
 }
 
 /* --- Resultado Obtenido --- */
@@ -91,32 +98,75 @@ body {
     text-align: center;
     padding: 20px 0;
     margin-top: 30px;
+    /* Ajuste para que el borde inferior del contenedor termine con el color verde */
 }
 
 .result-label {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
     margin: 0;
 }
 
 .result-score {
-    font-size: 2.5em;
+    font-size: 2.2em;
     font-weight: bold;
     margin: 5px 0 0 0;
     line-height: 1;
 }
 
 .result-text {
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: bold;
     margin: 5px 0 0 0;
     line-height: 1;
 }
 
-/* Estilos para el efecto de sombra en el contenedor */
-@media (min-width: 601px) {
+/* ======================================= */
+/* MEDIA QUERY: AJUSTES PARA PANTALLAS GRANDES (PC/TABLET) */
+/* ======================================= */
+@media (min-width: 650px) {
+
+    body {
+        padding: 40px 0; /* Agregamos espacio arriba y abajo para que el contenido "flote" */
+    }
+
+    /* El contenedor ahora es el que tiene el "papel" blanco */
     .container {
-        padding: 0 40px 40px 40px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra para simular un documento */
+        padding-bottom: 40px;
+    }
+    
+    .header-main {
+        /* Se mueve el header dentro del contenedor para que todo esté centrado */
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Reajustes de tamaño de fuente y padding para PC */
+    .siged {
+        font-size: 2em;
+        padding-left: 50px;
+    }
+
+    .title-doc {
+        font-size: 1.4em;
+        padding: 40px 40px 10px 40px;
+    }
+
+    .detail-section {
+        padding: 0 40px;
+    }
+    
+    .value, .value-folio {
+        font-size: 1.1em;
+    }
+    
+    .result-score {
+        font-size: 2.5em;
+    }
+
+    .result-text {
+        font-size: 1.4em;
     }
 }
