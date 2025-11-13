@@ -28,20 +28,9 @@ body {
 .logo {
     width: 180px; /* Tamaño ligeramente reducido para móvil */
     max-width: 90%;
-    /* Elimino el filtro brightness(0) invert(1) por defecto,
-       ya que un JPG/JPEG no siempre se adapta bien a ese filtro.
-       Si tu JPEG es en blanco y negro o monocromático,
-       podemos intentar aplicar un filtro de contraste o luminosidad específico si lo necesitas.
-       De lo contrario, se mostrará como está. */
-}
-
-/* Si tu logo es un SVG blanco y negro y quieres que se vea blanco sobre guinda,
-   o si tienes problemas con tu JPEG y quieres intentar forzar un color,
-   podrías probar algo como esto (descomentar si es necesario):
-.logo[src$=".svg"], .logo[src$=".png"] {
+    /* Este filtro se aplica para asegurar que el SVG se vea blanco sobre el fondo guinda */
     filter: brightness(0) invert(1); 
 }
-*/
 
 .header-bottom {
     background-color: var(--color-gold);
