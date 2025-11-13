@@ -16,7 +16,6 @@ body {
 /* --- Encabezado --- */
 .header-main {
     background-color: #fff;
-    /* Eliminamos la sombra aquí, la pondremos en el contenedor para la vista de escritorio */
     position: relative;
 }
 
@@ -29,8 +28,20 @@ body {
 .logo {
     width: 180px; /* Tamaño ligeramente reducido para móvil */
     max-width: 90%;
-    filter: brightness(0) invert(1);
+    /* Elimino el filtro brightness(0) invert(1) por defecto,
+       ya que un JPG/JPEG no siempre se adapta bien a ese filtro.
+       Si tu JPEG es en blanco y negro o monocromático,
+       podemos intentar aplicar un filtro de contraste o luminosidad específico si lo necesitas.
+       De lo contrario, se mostrará como está. */
 }
+
+/* Si tu logo es un SVG blanco y negro y quieres que se vea blanco sobre guinda,
+   o si tienes problemas con tu JPEG y quieres intentar forzar un color,
+   podrías probar algo como esto (descomentar si es necesario):
+.logo[src$=".svg"], .logo[src$=".png"] {
+    filter: brightness(0) invert(1); 
+}
+*/
 
 .header-bottom {
     background-color: var(--color-gold);
@@ -49,10 +60,9 @@ body {
 /* --- Contenedor Principal (Vista Móvil) --- */
 .container {
     max-width: 600px;
-    margin: 0 auto; /* Quitamos el margen superior para que se pegue al header en móvil */
+    margin: 0 auto;
     padding: 0;
     background-color: #fff;
-    /* En móvil, el contenedor ocupa todo el ancho sin bordes ni sombras */
 }
 
 /* --- Título del Documento --- */
@@ -72,7 +82,6 @@ body {
     padding: 0 20px; /* Padding para los detalles en móvil */
 }
 
-/* Aseguramos que los labels y valores no tengan márgenes extra */
 .detail-section p {
     margin: 8px 0; 
 }
@@ -98,7 +107,6 @@ body {
     text-align: center;
     padding: 20px 0;
     margin-top: 30px;
-    /* Ajuste para que el borde inferior del contenedor termine con el color verde */
 }
 
 .result-label {
@@ -127,23 +135,20 @@ body {
 @media (min-width: 650px) {
 
     body {
-        padding: 40px 0; /* Agregamos espacio arriba y abajo para que el contenido "flote" */
+        padding: 40px 0;
     }
 
-    /* El contenedor ahora es el que tiene el "papel" blanco */
     .container {
         margin: 20px auto;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra para simular un documento */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         padding-bottom: 40px;
     }
     
     .header-main {
-        /* Se mueve el header dentro del contenedor para que todo esté centrado */
         max-width: 600px;
         margin: 0 auto;
     }
 
-    /* Reajustes de tamaño de fuente y padding para PC */
     .siged {
         font-size: 2em;
         padding-left: 50px;
